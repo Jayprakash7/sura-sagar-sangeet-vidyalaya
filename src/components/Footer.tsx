@@ -10,9 +10,16 @@ export const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
           {/* About Section */}
           <div>
-            <h3 className="text-white font-serif text-lg font-bold mb-4">
-              Sura Sagar Sangeet Vidyalaya
-            </h3>
+            <div className="flex items-center gap-3 mb-4">
+              <img
+                src="/logo.png"
+                alt="Sura Sagar Sangeet Vidyalaya"
+                className="w-12 h-12 rounded-full object-contain bg-white"
+              />
+              <h3 className="text-white font-serif text-lg font-bold">
+                Sura Sagar Sangeet Vidyalaya
+              </h3>
+            </div>
             <p className="text-sm leading-relaxed">
               Preserving tradition, nurturing talent, and inspiring through music and dance.
             </p>
@@ -49,9 +56,9 @@ export const Footer: React.FC = () => {
           <div>
             <h4 className="text-white font-bold mb-4">Contact Info</h4>
             <ul className="space-y-2 text-sm">
-              <li>Email: info@sssv.edu.in</li>
+              <li>Email: info@surasagar.edu.in</li>
               <li>Phone: +91 9876543210</li>
-              <li>Address: Bhubaneswar, Odisha</li>
+              <li>Address: Jagatsinghpur, Odisha</li>
             </ul>
           </div>
         </div>

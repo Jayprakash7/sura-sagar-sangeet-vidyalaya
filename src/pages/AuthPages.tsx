@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import { PublicLayout } from '../layouts/PublicLayout';
 import { AlertCircle } from 'lucide-react';
+import { getFirebaseErrorMessage } from '../utils/errors';
 
 export const LoginPage: React.FC = () => {
   const [email, setEmail] = useState('');
@@ -21,17 +22,7 @@ export const LoginPage: React.FC = () => {
       await login(email, password);
       navigate('/dashboard');
     } catch (err: unknown) {
-      if (err instanceof Error) {
-        if (err.message.includes('invalid-login-credentials') || err.message.includes('user-not-found')) {
-          setError('Invalid email or password');
-        } else if (err.message.includes('too-many-requests')) {
-          setError('Too many login attempts. Please try again later.');
-        } else {
-          setError(err.message || 'Login failed');
-        }
-      } else {
-        setError('An error occurred during login');
-      }
+      setError(getFirebaseErrorMessage(err));
     } finally {
       setLoading(false);
     }
@@ -39,10 +30,10 @@ export const LoginPage: React.FC = () => {
 
   return (
     <PublicLayout>
-      <section className="section-padding bg-gray-50 flex items-center justify-center">
+      <section className="section-padding bg-gray-50 flex items-center justify-center px-4">
         <div className="w-full max-w-md">
-          <div className="bg-white rounded-lg shadow-md p-8">
-            <h1 className="text-3xl font-serif font-bold text-center mb-2">Login</h1>
+          <div className="bg-white rounded-lg shadow-md p-6 sm:p-8">
+            <h1 className="text-2xl sm:text-3xl font-serif font-bold text-center mb-2">Login</h1>
             <p className="text-gray-600 text-center mb-8">
               Sign in to your account to access the student management system
             </p>
@@ -111,8 +102,8 @@ export const UnauthorizedPage: React.FC = () => {
     <PublicLayout>
       <section className="section-padding bg-white">
         <div className="container-custom text-center">
-          <h1 className="text-4xl font-serif font-bold mb-4">Access Denied</h1>
-          <p className="text-gray-600 text-lg mb-8">
+          <h1 className="text-3xl sm:text-4xl font-serif font-bold mb-4">Access Denied</h1>
+          <p className="text-gray-600 text-base sm:text-lg mb-8">
             You do not have permission to access this page.
           </p>
           <a href="/" className="btn-primary">

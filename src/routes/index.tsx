@@ -16,6 +16,7 @@ import {
   ContactPage,
 } from '../pages/PublicPages';
 import { LoginPage, UnauthorizedPage } from '../pages/AuthPages';
+import { SetupAdminPage } from '../pages/SetupAdminPage';
 import { DashboardPage } from '../pages/DashboardPage';
 
 export const AppRoutes: React.FC = () => {
@@ -36,6 +37,9 @@ export const AppRoutes: React.FC = () => {
       {/* Auth Routes */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/unauthorized" element={<UnauthorizedPage />} />
+
+      {/* One-time admin setup - REMOVE after creating first admin */}
+      <Route path="/setup" element={<SetupAdminPage />} />
 
       {/* Protected Routes */}
       <Route

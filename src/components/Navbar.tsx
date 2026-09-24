@@ -33,22 +33,24 @@ export const Navbar: React.FC = () => {
       <div className="container-custom">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2">
-            <div className="w-10 h-10 bg-primary-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold">SSSV</span>
-            </div>
-            <span className="font-serif text-lg font-bold text-gray-900 hidden sm:inline">
-              SSSV
+          <Link to="/" className="flex items-center gap-3 flex-shrink-0">
+            <img
+              src="/logo.png"
+              alt="Sura Sagar Sangeet Vidyalaya"
+              className="w-11 h-11 rounded-full object-contain"
+            />
+            <span className="font-serif text-base lg:text-lg font-bold text-gray-900 whitespace-nowrap hidden sm:inline">
+              Sura Sagar Sangeet Vidyalaya
             </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden lg:flex items-center gap-8">
+          <div className="hidden xl:flex items-center gap-5">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
-                className="text-gray-700 hover:text-primary-600 transition-colors text-sm font-medium"
+                className="text-gray-700 hover:text-primary-600 transition-colors text-sm font-medium whitespace-nowrap"
               >
                 {link.label}
               </Link>
@@ -80,7 +82,7 @@ export const Navbar: React.FC = () => {
 
             {/* Mobile Menu Toggle */}
             <button
-              className="lg:hidden p-2"
+              className="xl:hidden p-2"
               onClick={() => setIsOpen(!isOpen)}
             >
               {isOpen ? (
@@ -94,7 +96,7 @@ export const Navbar: React.FC = () => {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="lg:hidden pb-4 border-t border-gray-200">
+          <div className="xl:hidden pb-4 border-t border-gray-200">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
