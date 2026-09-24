@@ -1,6 +1,5 @@
 import React from 'react';
 import { useAuth } from '../context/AuthContext';
-import { DashboardLayout } from '../layouts/DashboardLayout';
 import { AdminDashboard } from './dashboards/AdminDashboard';
 import { OpsDashboard } from './dashboards/OpsDashboard';
 import { UserDashboard } from './dashboards/UserDashboard';
@@ -11,22 +10,18 @@ export const DashboardPage: React.FC = () => {
 
   if (loading || !user) {
     return (
-      <div className="min-h-screen flex items-center justify-center">
+      <div className="min-h-[50vh] flex items-center justify-center">
         <LoadingSpinner />
       </div>
     );
   }
 
-  const renderDashboard = () => {
-    switch (user.role) {
-      case 'ADMIN':
-        return <AdminDashboard />;
-      case 'OPS_USER':
-        return <OpsDashboard />;
-      default:
-        return <UserDashboard />;
-    }
-  };
-
-  return <DashboardLayout>{renderDashboard()}</DashboardLayout>;
+  switch (user.role) {
+    case 'ADMIN':
+      return <AdminDashboard />;
+    case 'OPS_USER':
+      return <OpsDashboard />;
+    default:
+      return <UserDashboard />;
+  }
 };
